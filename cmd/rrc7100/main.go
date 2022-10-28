@@ -1,7 +1,6 @@
 package main
 
 import (
-	"crypto/rand"
 	"crypto/tls"
 	"flag"
 	"fmt"
@@ -34,15 +33,23 @@ func main() {
 
 	// if no username specified, lets just autogen a random one
 	if len(*username) == 0 {
-		buf := make([]byte, 6)
-		_, err := rand.Read(buf)
+		/*
+			buf := make([]byte, 6)
+			_, err := rand.Read(buf)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "%s\n", err)
+				os.Exit(1)
+			}
+
+			buf[0] |= 2
+			b.Config.Username = fmt.Sprintf("rrc7100-%02x%02x%02x%02x%02x%02x", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5])
+		*/
+		hostname, err := os.Hostname()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "%s\n", err)
 			os.Exit(1)
 		}
-
-		buf[0] |= 2
-		b.Config.Username = fmt.Sprintf("rrc7100-%02x%02x%02x%02x%02x%02x", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5])
+		b.Config.Username = hostname
 	} else {
 		b.Config.Username = *username
 	}
