@@ -16,12 +16,12 @@ import (
 
 func main() {
 	// Command line flags
-	server := flag.String("server", "talkiepi.projectable.me:64738", "the server to connect to")
+	server := flag.String("server", "localhost:64738", "the server to connect to")
 	username := flag.String("username", "", "the username of the client")
 	password := flag.String("password", "", "the password of the server")
 	insecure := flag.Bool("insecure", true, "skip server certificate verification")
 	certificate := flag.String("certificate", "", "PEM encoded certificate and private key")
-	channel := flag.String("channel", "talkiepi", "mumble channel to join by default")
+	channel := flag.String("channel", "Root", "mumble channel to join by default")
 
 	flag.Parse()
 
@@ -42,7 +42,7 @@ func main() {
 		}
 
 		buf[0] |= 2
-		b.Config.Username = fmt.Sprintf("talkiepi-%02x%02x%02x%02x%02x%02x", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5])
+		b.Config.Username = fmt.Sprintf("rrc7100-%02x%02x%02x%02x%02x%02x", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5])
 	} else {
 		b.Config.Username = *username
 	}
