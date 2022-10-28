@@ -17,9 +17,16 @@ func (b *RRC7100) Init() {
 	b.Config.Attach(gumbleutil.AutoBitrate)
 	b.Config.Attach(b)
 
-	b.initGPIO()
+	// b.initGPIO()
 
 	b.Connect()
+
+	// our main run loop here... keep things alive
+	keepAlive := make(chan bool)
+	exitStatus := 0
+
+	<-keepAlive
+	os.Exit(exitStatus)
 }
 
 func (b *RRC7100) CleanUp() {
@@ -68,6 +75,7 @@ func (b *RRC7100) OpenStream() {
 		os.Exit(1)
 	} else {
 		b.Stream = stream
+		b.TransmitStart() //Instantly start Transmitting
 	}
 }
 
