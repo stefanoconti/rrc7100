@@ -1,4 +1,4 @@
-package talkiepi
+package rrc7100
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"github.com/stianeikeland/go-rpio"
 )
 
-func (b *Talkiepi) initGPIO() {
+func (b *RRC7100) initGPIO() {
 	// we need to pull in rpio to pullup our button pin
 	if err := rpio.Open(); err != nil {
 		fmt.Println(err)
@@ -54,7 +54,7 @@ func (b *Talkiepi) initGPIO() {
 	b.TransmitLED = gpio.NewOutput(TransmitLEDPin, false)
 }
 
-func (b *Talkiepi) LEDOn(LED gpio.Pin) {
+func (b *RRC7100) LEDOn(LED gpio.Pin) {
 	if b.GPIOEnabled == false {
 		return
 	}
@@ -62,7 +62,7 @@ func (b *Talkiepi) LEDOn(LED gpio.Pin) {
 	LED.High()
 }
 
-func (b *Talkiepi) LEDOff(LED gpio.Pin) {
+func (b *RRC7100) LEDOff(LED gpio.Pin) {
 	if b.GPIOEnabled == false {
 		return
 	}
@@ -70,7 +70,7 @@ func (b *Talkiepi) LEDOff(LED gpio.Pin) {
 	LED.Low()
 }
 
-func (b *Talkiepi) LEDOffAll() {
+func (b *RRC7100) LEDOffAll() {
 	if b.GPIOEnabled == false {
 		return
 	}

@@ -6,8 +6,6 @@ github.com/dchote/gpio v0.0.0-20160912012454-03d78156ad1a h1:jKxCPhfvlr7nVg1GrWA
 github.com/dchote/gpio v0.0.0-20160912012454-03d78156ad1a/go.mod h1:BRl23nR0S8U8dYKPYSOosARhdUViXvyLl4PXDvUDAhw=
 github.com/dchote/gumble v0.0.0-20171217174924-fb6d7385a5cd h1:Qjkc5hkPq4crayNt3VcxQdlpHmslA2x456mDGNh1uaY=
 github.com/dchote/gumble v0.0.0-20171217174924-fb6d7385a5cd/go.mod h1:F+6KFrzk1IBc83Y+OIdGv1YbRNZbV9Q+AqOBQJThxls=
-github.com/dchote/talkiepi v0.0.0-20190204123126-c3d9bc78b3f1 h1:oVeYKt7ShY6MG6ong4JYQHp4UD/GQI0fR/s63YqsE0k=
-github.com/dchote/talkiepi v0.0.0-20190204123126-c3d9bc78b3f1/go.mod h1:26ro6VT7jhb6TYVg08NsbNhvVsjdp8ji54wmbqDoGSg=
 github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=
 github.com/golang/protobuf v1.5.2 h1:ROPKBNFfQgOUMifHyP+KYbvpjbdoFNs+aK7DXlji0Tw=
 github.com/golang/protobuf v1.5.2/go.mod h1:XVQd3VNwM+JqD3oG2Ue2ip4fOMUkwXdXDdiuN0vRsmY=

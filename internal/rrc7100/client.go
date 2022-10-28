@@ -1,18 +1,19 @@
-package talkiepi
+package rrc7100
 
 import (
 	"fmt"
-	"github.com/dchote/gumble/gumble"
-	"github.com/dchote/gumble/gumbleopenal"
-	"github.com/dchote/gumble/gumbleutil"
-	"github.com/kennygrant/sanitize"
 	"net"
 	"os"
 	"strings"
 	"time"
+
+	"github.com/dchote/gumble/gumble"
+	"github.com/dchote/gumble/gumbleopenal"
+	"github.com/dchote/gumble/gumbleutil"
+	"github.com/kennygrant/sanitize"
 )
 
-func (b *Talkiepi) Init() {
+func (b *RRC7100) Init() {
 	b.Config.Attach(gumbleutil.AutoBitrate)
 	b.Config.Attach(b)
 
@@ -21,12 +22,12 @@ func (b *Talkiepi) Init() {
 	b.Connect()
 }
 
-func (b *Talkiepi) CleanUp() {
+func (b *RRC7100) CleanUp() {
 	b.Client.Disconnect()
 	b.LEDOffAll()
 }
 
-func (b *Talkiepi) Connect() {
+func (b *RRC7100) Connect() {
 	var err error
 	b.ConnectAttempts++
 
@@ -39,7 +40,7 @@ func (b *Talkiepi) Connect() {
 	}
 }
 
-func (b *Talkiepi) ReConnect() {
+func (b *RRC7100) ReConnect() {
 	if b.Client != nil {
 		b.Client.Disconnect()
 	}
@@ -56,7 +57,7 @@ func (b *Talkiepi) ReConnect() {
 	}
 }
 
-func (b *Talkiepi) OpenStream() {
+func (b *RRC7100) OpenStream() {
 	// Audio
 	if os.Getenv("ALSOFT_LOGLEVEL") == "" {
 		os.Setenv("ALSOFT_LOGLEVEL", "0")
@@ -70,7 +71,7 @@ func (b *Talkiepi) OpenStream() {
 	}
 }
 
-func (b *Talkiepi) ResetStream() {
+func (b *RRC7100) ResetStream() {
 	b.Stream.Destroy()
 
 	// Sleep a bit and re-open
@@ -79,7 +80,7 @@ func (b *Talkiepi) ResetStream() {
 	b.OpenStream()
 }
 
-func (b *Talkiepi) TransmitStart() {
+func (b *RRC7100) TransmitStart() {
 	if b.IsConnected == false {
 		return
 	}
@@ -92,7 +93,7 @@ func (b *Talkiepi) TransmitStart() {
 	b.Stream.StartSource()
 }
 
-func (b *Talkiepi) TransmitStop() {
+func (b *RRC7100) TransmitStop() {
 	if b.IsConnected == false {
 		return
 	}
@@ -104,7 +105,7 @@ func (b *Talkiepi) TransmitStop() {
 	b.IsTransmitting = false
 }
 
-func (b *Talkiepi) OnConnect(e *gumble.ConnectEvent) {
+func (b *RRC7100) OnConnect(e *gumble.ConnectEvent) {
 	b.Client = e.Client
 
 	b.ConnectAttempts = 0
@@ -123,7 +124,7 @@ func (b *Talkiepi) OnConnect(e *gumble.ConnectEvent) {
 	}
 }
 
-func (b *Talkiepi) OnDisconnect(e *gumble.DisconnectEvent) {
+func (b *RRC7100) OnDisconnect(e *gumble.DisconnectEvent) {
 	var reason string
 	switch e.Type {
 	case gumble.DisconnectError:
@@ -147,7 +148,7 @@ func (b *Talkiepi) OnDisconnect(e *gumble.DisconnectEvent) {
 	b.ReConnect()
 }
 
-func (b *Talkiepi) ChangeChannel(ChannelName string) {
+func (b *RRC7100) ChangeChannel(ChannelName string) {
 	channel := b.Client.Channels.Find(ChannelName)
 	if channel != nil {
 		b.Client.Self.Move(channel)
@@ -156,7 +157,7 @@ func (b *Talkiepi) ChangeChannel(ChannelName string) {
 	}
 }
 
-func (b *Talkiepi) ParticipantLEDUpdate() {
+func (b *RRC7100) ParticipantLEDUpdate() {
 	time.Sleep(100 * time.Millisecond)
 
 	// If we have more than just ourselves in the channel, turn on the participants LED, otherwise, turn it off
@@ -172,11 +173,11 @@ func (b *Talkiepi) ParticipantLEDUpdate() {
 	}
 }
 
-func (b *Talkiepi) OnTextMessage(e *gumble.TextMessageEvent) {
+func (b *RRC7100) OnTextMessage(e *gumble.TextMessageEvent) {
 	fmt.Printf("Message from %s: %s\n", e.Sender.Name, strings.TrimSpace(esc(e.Message)))
 }
 
-func (b *Talkiepi) OnUserChange(e *gumble.UserChangeEvent) {
+func (b *RRC7100) OnUserChange(e *gumble.UserChangeEvent) {
 	var info string
 
 	switch e.Type {
@@ -213,7 +214,7 @@ func (b *Talkiepi) OnUserChange(e *gumble.UserChangeEvent) {
 	go b.ParticipantLEDUpdate()
 }
 
-func (b *Talkiepi) OnPermissionDenied(e *gumble.PermissionDeniedEvent) {
+func (b *RRC7100) OnPermissionDenied(e *gumble.PermissionDeniedEvent) {
 	var info string
 	switch e.Type {
 	case gumble.PermissionDeniedOther:
@@ -241,23 +242,23 @@ func (b *Talkiepi) OnPermissionDenied(e *gumble.PermissionDeniedEvent) {
 	fmt.Printf("Permission denied: %s\n", info)
 }
 
-func (b *Talkiepi) OnChannelChange(e *gumble.ChannelChangeEvent) {
+func (b *RRC7100) OnChannelChange(e *gumble.ChannelChangeEvent) {
 	go b.ParticipantLEDUpdate()
 }
 
-func (b *Talkiepi) OnUserList(e *gumble.UserListEvent) {
+func (b *RRC7100) OnUserList(e *gumble.UserListEvent) {
 }
 
-func (b *Talkiepi) OnACL(e *gumble.ACLEvent) {
+func (b *RRC7100) OnACL(e *gumble.ACLEvent) {
 }
 
-func (b *Talkiepi) OnBanList(e *gumble.BanListEvent) {
+func (b *RRC7100) OnBanList(e *gumble.BanListEvent) {
 }
 
-func (b *Talkiepi) OnContextActionChange(e *gumble.ContextActionChangeEvent) {
+func (b *RRC7100) OnContextActionChange(e *gumble.ContextActionChangeEvent) {
 }
 
-func (b *Talkiepi) OnServerConfig(e *gumble.ServerConfigEvent) {
+func (b *RRC7100) OnServerConfig(e *gumble.ServerConfigEvent) {
 }
 
 func esc(str string) string {

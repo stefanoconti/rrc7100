@@ -1,4 +1,4 @@
-package talkiepi
+package rrc7100
 
 import (
 	"crypto/tls"
@@ -16,7 +16,7 @@ const (
 	ButtonPin          uint = 25
 )
 
-type Talkiepi struct {
+type RRC7100 struct {
 	Config *gumble.Config
 	Client *gumble.Client
 

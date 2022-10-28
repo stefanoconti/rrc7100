@@ -5,12 +5,13 @@ import (
 	"crypto/tls"
 	"flag"
 	"fmt"
-	"github.com/dchote/gumble/gumble"
-	_ "github.com/dchote/gumble/opus"
-	"github.com/dchote/talkiepi"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"github.com/dchote/gumble/gumble"
+	_ "github.com/dchote/gumble/opus"
+	"github.com/stefanoconti/rrc7100/internal/rrc7100"
 )
 
 func main() {
@@ -25,7 +26,7 @@ func main() {
 	flag.Parse()
 
 	// Initialize
-	b := talkiepi.Talkiepi{
+	b := rrc7100.RRC7100{
 		Config:      gumble.NewConfig(),
 		Address:     *server,
 		ChannelName: *channel,
