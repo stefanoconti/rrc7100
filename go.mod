@@ -15,3 +15,5 @@ require (
 	github.com/golang/protobuf v1.5.2 // indirect
 	golang.org/x/net v0.1.0 // indirect
 )
+
+replace golang.org/x/net v0.1.0 => github.com/golang/net v0.1.0
