@@ -8,8 +8,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/dchote/gumble/gumble"
-	_ "github.com/dchote/gumble/opus"
+	"github.com/stefanoconti/gumble/gumble"
+	_ "github.com/stefanoconti/gumble/opus"
 	"github.com/stefanoconti/rrc7100/internal/rrc7100"
 )
 
