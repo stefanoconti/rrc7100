@@ -10,7 +10,6 @@ require (
 
 require (
 	github.com/golang/protobuf v1.5.2 // indirect
-	github.com/stefanoconti/gumble v0.0.0-20221101235720-d1084709e30d
 	golang.org/x/net v0.1.0 // indirect
 )
 
