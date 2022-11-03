@@ -7,10 +7,10 @@ github.com/golang/protobuf v1.5.2 h1:ROPKBNFfQgOUMifHyP+KYbvpjbdoFNs+aK7DXlji0Tw
 github.com/golang/protobuf v1.5.2/go.mod h1:XVQd3VNwM+JqD3oG2Ue2ip4fOMUkwXdXDdiuN0vRsmY=
 github.com/google/go-cmp v0.5.5 h1:Khx7svrCpmxxtHBq5j2mp/xVjsi8hQMfNLvJFAlrGgU=
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
-github.com/iu0jgo/gopus v0.0.0-20221103081150-36cdc452300b h1:V/n10p/do1c8Wqtnq0Jqaw2l0f7SSOPSxL9C3tUPoFs=
-github.com/iu0jgo/gopus v0.0.0-20221103081150-36cdc452300b/go.mod h1:Z2bzuyQB5/ZQl5FbsFVLC7cUhku/LVjYFZ1Wi9fciFg=
-github.com/iu0jgo/gumble v0.0.0-20221103084125-75d687f0752f h1:5wCF/fm0GSZ8NuhDqwQ++TyHmpoupEKame3u05+JXuk=
-github.com/iu0jgo/gumble v0.0.0-20221103084125-75d687f0752f/go.mod h1:PwLhsE1/5j/UAPBIyjuH/IyqbfOEiM88ZFO2YLTsLFk=
+github.com/iu0jgo/gopus v0.0.0-20221103094113-7ddffc64b02e h1:PjUH+348o3DcOa4YR9AGiogVQtxJVwdxufqMux4dEnY=
+github.com/iu0jgo/gopus v0.0.0-20221103094113-7ddffc64b02e/go.mod h1:Z2bzuyQB5/ZQl5FbsFVLC7cUhku/LVjYFZ1Wi9fciFg=
+github.com/iu0jgo/gumble v0.0.0-20221103095053-2f3dac9d105a h1:vIgE8yQpW+fWs8vjqVf2mtB1dMtt9czTx3dC6kw1kHo=
+github.com/iu0jgo/gumble v0.0.0-20221103095053-2f3dac9d105a/go.mod h1:U+nVv7yzOioJhwpZCS/ISOtUXh1jbkfiBpXV4x/aeDA=
 github.com/kennygrant/sanitize v1.2.4 h1:gN25/otpP5vAsO2djbMhF/LQX6R7+O1TB4yv8NzpJ3o=
 github.com/kennygrant/sanitize v1.2.4/go.mod h1:LGsjYYtgxbetdg5owWB2mpgUL6e2nfw2eObZ0u0qvak=
 github.com/stianeikeland/go-rpio v4.2.0+incompatible h1:CUOlIxdJdT+H1obJPsmg8byu7jMSECLfAN9zynm5QGo=
