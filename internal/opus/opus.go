@@ -24,15 +24,15 @@ type generator struct {
 
 func (g *generator) getOpusApplication() gopus.Application {
 	switch g.encoderMode {
-	case "audio":
-		fmt.Println("Use 'Audio' encoder mode")
-		return gopus.Audio
+	case "voip":
+		fmt.Println("Use 'VoIP' encoder mode")
+		return gopus.Voip
 	case "lowdelay":
 		fmt.Println("Use 'Restricted Low Delay' encoder mode")
 		return gopus.RestrictedLowDelay
 	default:
-		fmt.Println("Use 'VoIP' encoder mode")
-		return gopus.Voip
+		fmt.Println("Use 'Audio' encoder mode")
+		return gopus.Audio
 	}
 }
 

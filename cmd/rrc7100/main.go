@@ -21,7 +21,7 @@ func main() {
 	insecure := flag.Bool("insecure", true, "skip server certificate verification")
 	certificate := flag.String("certificate", "", "PEM encoded certificate and private key")
 	channel := flag.String("channel", "Root", "mumble channel to join by default")
-	encoderMode := flag.String("encoderMode", "voip", "opus encoder application mode")
+	encoderMode := flag.String("encoder-mode", "audio", "opus encoder application mode")
 
 	flag.Parse()
 
