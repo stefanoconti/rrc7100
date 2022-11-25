@@ -42,7 +42,9 @@ func (*generator) ID() int {
 
 func (g *generator) NewEncoder() gumble.AudioEncoder {
 	e, _ := hopus.NewEncoder(gumble.AudioSampleRate, gumble.AudioChannels, g.getOpusApplication())
-	// e.SetBitrate(gopus.BitrateMaximum)
+	e.SetBitrate(24000)
+	e.SetComplexity(5)
+	e.SetMaxBandwidth(hopus.Wideband)
 	return &Encoder{
 		e,
 	}

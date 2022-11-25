@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	"github.com/iu0jgo/gumble/gumble"
 	opushraban "github.com/stefanoconti/rrc7100/internal/opus/hraban"
@@ -31,6 +32,8 @@ func main() {
 		Address:     *server,
 		ChannelName: *channel,
 	}
+
+	b.Config.AudioInterval = 20 * time.Millisecond
 
 	// if no username specified, lets just autogen a random one
 	if len(*username) == 0 {
