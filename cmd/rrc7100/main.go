@@ -33,7 +33,7 @@ func main() {
 		ChannelName: *channel,
 	}
 
-	b.Config.AudioInterval = 20 * time.Millisecond
+	b.Config.AudioInterval = 60 * time.Millisecond
 
 	// if no username specified, lets just autogen a random one
 	if len(*username) == 0 {
