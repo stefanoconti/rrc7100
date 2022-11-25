@@ -8,6 +8,7 @@ require (
 	github.com/iu0jgo/gumble v0.0.0-20221103114041-7d9bf5ab5f5e
 	github.com/kennygrant/sanitize v1.2.4
 	github.com/stianeikeland/go-rpio v4.2.0+incompatible
+	gopkg.in/hraban/opus.v2 v2.0.0-20220302220929-eeacdbcb92d0
 )
 
 require (

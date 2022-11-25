@@ -9,7 +9,7 @@ import (
 	"syscall"
 
 	"github.com/iu0jgo/gumble/gumble"
-	"github.com/stefanoconti/rrc7100/internal/opus"
+	opushraban "github.com/stefanoconti/rrc7100/internal/opus/hraban"
 	"github.com/stefanoconti/rrc7100/internal/rrc7100"
 )
 
@@ -21,7 +21,7 @@ func main() {
 	insecure := flag.Bool("insecure", true, "skip server certificate verification")
 	certificate := flag.String("certificate", "", "PEM encoded certificate and private key")
 	channel := flag.String("channel", "Root", "mumble channel to join by default")
-	encoderMode := flag.String("encoder-mode", "audio", "opus encoder application mode")
+	encoderMode := flag.String("encoder-mode", "lowdelay", "opus encoder application mode")
 
 	flag.Parse()
 
@@ -69,7 +69,7 @@ func main() {
 		b.TLSConfig.Certificates = append(b.TLSConfig.Certificates, cert)
 	}
 
-	opus.Register(*encoderMode)
+	opushraban.Register(*encoderMode)
 
 	b.Init()
 

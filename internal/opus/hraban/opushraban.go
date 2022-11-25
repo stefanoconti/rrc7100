@@ -1,10 +1,10 @@
-package opus
+package opushraban
 
 import (
 	"fmt"
 
-	"github.com/iu0jgo/gopus"
 	"github.com/iu0jgo/gumble/gumble"
+	hopus "gopkg.in/hraban/opus.v2"
 )
 
 var Codec gumble.AudioCodec
@@ -22,17 +22,17 @@ type generator struct {
 	encoderMode string
 }
 
-func (g *generator) getOpusApplication() gopus.Application {
+func (g *generator) getOpusApplication() hopus.Application {
 	switch g.encoderMode {
 	case "voip":
 		fmt.Println("Use 'VoIP' encoder mode")
-		return gopus.Voip
+		return hopus.AppVoIP
 	case "audio":
 		fmt.Println("Use 'Audio' encoder mode")
-		return gopus.Audio
+		return hopus.AppAudio
 	default:
 		fmt.Println("Use 'Restricted Low Delay' encoder mode")
-		return gopus.RestrictedLowDelay
+		return hopus.AppRestrictedLowdelay
 	}
 }
 
@@ -41,24 +41,25 @@ func (*generator) ID() int {
 }
 
 func (g *generator) NewEncoder() gumble.AudioEncoder {
-	e, _ := gopus.NewEncoder(gumble.AudioSampleRate, gumble.AudioChannels, g.getOpusApplication())
-	e.SetBitrate(gopus.BitrateMaximum)
+	e, _ := hopus.NewEncoder(gumble.AudioSampleRate, gumble.AudioChannels, g.getOpusApplication())
+	// e.SetBitrate(gopus.BitrateMaximum)
 	return &Encoder{
 		e,
 	}
 }
 
 func (*generator) NewDecoder() gumble.AudioDecoder {
-	d, _ := gopus.NewDecoder(gumble.AudioSampleRate, gumble.AudioChannels)
+	d, _ := hopus.NewDecoder(gumble.AudioSampleRate, gumble.AudioChannels)
 	return &Decoder{
 		d,
+		gumble.AudioChannels,
 	}
 }
 
 // encoder
 
 type Encoder struct {
-	*gopus.Encoder
+	*hopus.Encoder
 }
 
 func (*Encoder) ID() int {
@@ -66,17 +67,21 @@ func (*Encoder) ID() int {
 }
 
 func (e *Encoder) Encode(pcm []int16, mframeSize, maxDataBytes int) ([]byte, error) {
-	return e.Encoder.Encode(pcm, mframeSize, maxDataBytes)
+	buf := make([]byte, maxDataBytes)
+	n, err := e.Encoder.Encode(pcm, buf)
+	return buf[:n], err
+
 }
 
 func (e *Encoder) Reset() {
-	e.Encoder.ResetState()
+	// e.Encoder.ResetState()
 }
 
 // decoder
 
 type Decoder struct {
-	*gopus.Decoder
+	*hopus.Decoder
+	channels int
 }
 
 func (*Decoder) ID() int {
@@ -84,9 +89,11 @@ func (*Decoder) ID() int {
 }
 
 func (d *Decoder) Decode(data []byte, frameSize int) ([]int16, error) {
-	return d.Decoder.Decode(data, frameSize, false)
+	pcmBuf := make([]int16, d.channels*frameSize)
+	n, err := d.Decoder.Decode(data, pcmBuf)
+	return pcmBuf[:n], err
 }
 
 func (d *Decoder) Reset() {
-	d.Decoder.ResetState()
+	// d.Decoder.ResetState()
 }
