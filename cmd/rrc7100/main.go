@@ -23,6 +23,7 @@ func main() {
 	certificate := flag.String("certificate", "", "PEM encoded certificate and private key")
 	channel := flag.String("channel", "Root", "mumble channel to join by default")
 	encoderMode := flag.String("encoder-mode", "lowdelay", "opus encoder application mode")
+	audioInterval := flag.String("audio-interval", "60ms", "the interval at which audio packets are sent. Valid values are: 10ms, 20ms, 40ms, and 60ms.")
 
 	flag.Parse()
 
@@ -33,7 +34,12 @@ func main() {
 		ChannelName: *channel,
 	}
 
-	b.Config.AudioInterval = 60 * time.Millisecond
+	ai, err := time.ParseDuration(*audioInterval)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "%s\n", err)
+		os.Exit(1)
+	}
+	b.Config.AudioInterval = ai
 
 	// if no username specified, lets just autogen a random one
 	if len(*username) == 0 {
