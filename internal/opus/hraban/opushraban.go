@@ -30,9 +30,12 @@ func (g *generator) getOpusApplication() hopus.Application {
 	case "audio":
 		fmt.Println("Use 'Audio' encoder mode")
 		return hopus.AppAudio
-	default:
+	case "lowdelay":
 		fmt.Println("Use 'Restricted Low Delay' encoder mode")
 		return hopus.AppRestrictedLowdelay
+	default:
+		fmt.Println("Use 'Audio' encoder mode")
+		return hopus.AppAudio
 	}
 }
 
@@ -43,7 +46,7 @@ func (*generator) ID() int {
 func (g *generator) NewEncoder() gumble.AudioEncoder {
 	e, _ := hopus.NewEncoder(gumble.AudioSampleRate, gumble.AudioChannels, g.getOpusApplication())
 	e.SetBitrate(24000)
-	e.SetComplexity(5)
+	e.SetComplexity(3)
 	e.SetMaxBandwidth(hopus.Wideband)
 	return &Encoder{
 		e,

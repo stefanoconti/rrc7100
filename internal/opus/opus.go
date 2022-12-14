@@ -30,9 +30,12 @@ func (g *generator) getOpusApplication() gopus.Application {
 	case "audio":
 		fmt.Println("Use 'Audio' encoder mode")
 		return gopus.Audio
-	default:
+	case "lowdelay":
 		fmt.Println("Use 'Restricted Low Delay' encoder mode")
 		return gopus.RestrictedLowDelay
+	default:
+		fmt.Println("Use 'Audio' encoder mode")
+		return gopus.Audio
 	}
 }
 

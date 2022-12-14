@@ -22,7 +22,7 @@ func main() {
 	insecure := flag.Bool("insecure", true, "skip server certificate verification")
 	certificate := flag.String("certificate", "", "PEM encoded certificate and private key")
 	channel := flag.String("channel", "Root", "mumble channel to join by default")
-	encoderMode := flag.String("encoder-mode", "lowdelay", "opus encoder application mode")
+	encoderMode := flag.String("encoder-mode", "audio", "opus encoder application mode")
 	audioInterval := flag.String("audio-interval", "60ms", "the interval at which audio packets are sent. Valid values are: 10ms, 20ms, 40ms, and 60ms.")
 
 	flag.Parse()
