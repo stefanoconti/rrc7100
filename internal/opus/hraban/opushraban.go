@@ -3,7 +3,7 @@ package opushraban
 import (
 	"fmt"
 
-	"github.com/iu0jgo/gumble/gumble"
+	"github.com/talkkonnect/gumble/gumble"
 	hopus "gopkg.in/hraban/opus.v2"
 )
 

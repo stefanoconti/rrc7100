@@ -3,8 +3,8 @@ package opus
 import (
 	"fmt"
 
-	"github.com/iu0jgo/gopus"
-	"github.com/iu0jgo/gumble/gumble"
+	"github.com/talkkonnect/gopus"
+	"github.com/talkkonnect/gumble/gumble"
 )
 
 var Codec gumble.AudioCodec

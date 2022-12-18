@@ -7,11 +7,9 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
 
-	"github.com/iu0jgo/gumble/gumble"
-	opushraban "github.com/stefanoconti/rrc7100/internal/opus/hraban"
 	"github.com/stefanoconti/rrc7100/internal/rrc7100"
+	"github.com/talkkonnect/gumble/gumble"
 )
 
 func main() {
@@ -22,8 +20,8 @@ func main() {
 	insecure := flag.Bool("insecure", true, "skip server certificate verification")
 	certificate := flag.String("certificate", "", "PEM encoded certificate and private key")
 	channel := flag.String("channel", "Root", "mumble channel to join by default")
-	encoderMode := flag.String("encoder-mode", "audio", "opus encoder application mode")
-	audioInterval := flag.String("audio-interval", "60ms", "the interval at which audio packets are sent. Valid values are: 10ms, 20ms, 40ms, and 60ms.")
+	encoderMode := flag.String("encoder-mode", "voip", "opus encoder application mode")
+	//audioInterval := flag.String("audio-interval", "60ms", "the interval at which audio packets are sent. Valid values are: 10ms, 20ms, 40ms, and 60ms.")
 
 	flag.Parse()
 
@@ -34,12 +32,14 @@ func main() {
 		ChannelName: *channel,
 	}
 
-	ai, err := time.ParseDuration(*audioInterval)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "%s\n", err)
-		os.Exit(1)
-	}
-	b.Config.AudioInterval = ai
+	/*
+		ai, err := time.ParseDuration(*audioInterval)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "%s\n", err)
+			os.Exit(1)
+		}
+		b.Config.AudioInterval = ai
+	*/
 
 	// if no username specified, lets just autogen a random one
 	if len(*username) == 0 {
@@ -78,7 +78,7 @@ func main() {
 		b.TLSConfig.Certificates = append(b.TLSConfig.Certificates, cert)
 	}
 
-	opushraban.Register(*encoderMode)
+	gopus.Register(*encoderMode)
 
 	b.Init()
 
