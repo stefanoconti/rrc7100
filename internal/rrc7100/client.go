@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/iu0jgo/gumble/gumble"
-	"github.com/iu0jgo/gumble/gumbleopenal"
-	"github.com/iu0jgo/gumble/gumbleutil"
 	"github.com/kennygrant/sanitize"
+	"layeh.com/gumble/gumble"
+	"layeh.com/gumble/gumbleopenal"
+	"layeh.com/gumble/gumbleutil"
 )
 
 func (b *RRC7100) Init() {

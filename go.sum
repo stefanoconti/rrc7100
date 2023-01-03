@@ -1,16 +1,13 @@
+github.com/dchote/go-openal v0.0.0-20171116030048-f4a9a141d372 h1:tz3KnXWtRZR0RWOfcMNOw+HHezWLQa7vfSOWTtKjchI=
+github.com/dchote/go-openal v0.0.0-20171116030048-f4a9a141d372/go.mod h1:74z+CYu2/mx4N+mcIS/rsvfAxBPBV9uv8zRAnwyFkdI=
 github.com/dchote/gpio v0.0.0-20160912012454-03d78156ad1a h1:jKxCPhfvlr7nVg1GrWAEhJT1m6H1QJJy9YeuSGrMMwk=
 github.com/dchote/gpio v0.0.0-20160912012454-03d78156ad1a/go.mod h1:BRl23nR0S8U8dYKPYSOosARhdUViXvyLl4PXDvUDAhw=
+github.com/golang/protobuf v1.3.1/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
 github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=
 github.com/golang/protobuf v1.5.2 h1:ROPKBNFfQgOUMifHyP+KYbvpjbdoFNs+aK7DXlji0Tw=
 github.com/golang/protobuf v1.5.2/go.mod h1:XVQd3VNwM+JqD3oG2Ue2ip4fOMUkwXdXDdiuN0vRsmY=
 github.com/google/go-cmp v0.5.5 h1:Khx7svrCpmxxtHBq5j2mp/xVjsi8hQMfNLvJFAlrGgU=
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
-github.com/iu0jgo/go-openal v0.0.0-20221103113221-dae7e21c0813 h1:3LOTNsGhIbLLVEzMQQdoi2uOgOh7DuRSsQrP7slxfQ8=
-github.com/iu0jgo/go-openal v0.0.0-20221103113221-dae7e21c0813/go.mod h1:R3Bg3BicvpTnbJ109KYgPjcD7TOGKtv63QBUCi1IMbw=
-github.com/iu0jgo/gopus v0.0.0-20221103094113-7ddffc64b02e h1:PjUH+348o3DcOa4YR9AGiogVQtxJVwdxufqMux4dEnY=
-github.com/iu0jgo/gopus v0.0.0-20221103094113-7ddffc64b02e/go.mod h1:Z2bzuyQB5/ZQl5FbsFVLC7cUhku/LVjYFZ1Wi9fciFg=
-github.com/iu0jgo/gumble v0.0.0-20221103114041-7d9bf5ab5f5e h1:3+55lQrDxMWGaPjJNsaFHPBQIthBSCkZlnyp+/fhUE0=
-github.com/iu0jgo/gumble v0.0.0-20221103114041-7d9bf5ab5f5e/go.mod h1:pr83RGdcaktwyxun4JAbp8dbkBEnKR31774iukhhmYo=
 github.com/kennygrant/sanitize v1.2.4 h1:gN25/otpP5vAsO2djbMhF/LQX6R7+O1TB4yv8NzpJ3o=
 github.com/kennygrant/sanitize v1.2.4/go.mod h1:LGsjYYtgxbetdg5owWB2mpgUL6e2nfw2eObZ0u0qvak=
 github.com/stianeikeland/go-rpio v4.2.0+incompatible h1:CUOlIxdJdT+H1obJPsmg8byu7jMSECLfAN9zynm5QGo=
@@ -22,3 +19,7 @@ golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543/go.mod h1:I/5z698sn9Ka8T
 google.golang.org/protobuf v1.26.0-rc.1/go.mod h1:jlhhOSvTdKEhbULTjvd4ARK9grFBp09yW+WbY/TyQbw=
 google.golang.org/protobuf v1.26.0 h1:bxAC2xTBsZGibn2RTntX0oH50xLsqy1OxA9tTL3p/lk=
 google.golang.org/protobuf v1.26.0/go.mod h1:9q0QmTI4eRPtz6boOQmLYwt+qCgq0jsYwAQnmE0givc=
+layeh.com/gopus v0.0.0-20161224163843-0ebf989153aa h1:WNU4LYsgD2UHxgKgB36mL6iMAMOvr127alafSlgBbiA=
+layeh.com/gopus v0.0.0-20161224163843-0ebf989153aa/go.mod h1:AOef7vHz0+v4sWwJnr0jSyHiX/1NgsMoaxl+rEPz/I0=
+layeh.com/gumble v0.0.0-20221205141517-d1df60a3cc14 h1:wY8eeq7DpM5iAugNbFrvuhdtmN8XM1iU+Ki5YZWjukg=
+layeh.com/gumble v0.0.0-20221205141517-d1df60a3cc14/go.mod h1:tWPVA9ZAfImNwabjcd9uDE+Mtz0Hfs7a7G3vxrnrwyc=

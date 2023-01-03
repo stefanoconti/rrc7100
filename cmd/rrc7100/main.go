@@ -8,9 +8,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/iu0jgo/gumble/gumble"
-	_ "github.com/iu0jgo/gumble/opus"
 	"github.com/stefanoconti/rrc7100/internal/rrc7100"
+	"layeh.com/gumble/gumble"
+	_ "layeh.com/gumble/opus"
 )
 
 func main() {
