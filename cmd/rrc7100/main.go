@@ -7,10 +7,11 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
+	"github.com/stefanoconti/rrc7100/internal/opus"
 	"github.com/stefanoconti/rrc7100/internal/rrc7100"
 	"layeh.com/gumble/gumble"
-	_ "layeh.com/gumble/opus"
 )
 
 func main() {
@@ -21,6 +22,8 @@ func main() {
 	insecure := flag.Bool("insecure", true, "skip server certificate verification")
 	certificate := flag.String("certificate", "", "PEM encoded certificate and private key")
 	channel := flag.String("channel", "Root", "mumble channel to join by default")
+	audioInterval := flag.String("audio-interval", "10ms", "the interval at which audio packets are sent. Valid values are: 10ms, 20ms, 40ms, and 60ms.")
+	encoderMode := flag.String("encoder-mode", "voip", "opus encoder application mode. Valid values are: voip, audio, and lowdelay")
 
 	flag.Parse()
 
@@ -30,6 +33,13 @@ func main() {
 		Address:     *server,
 		ChannelName: *channel,
 	}
+
+	ai, err := time.ParseDuration(*audioInterval)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "%s\n", err)
+		os.Exit(1)
+	}
+	b.Config.AudioInterval = ai
 
 	// if no username specified, lets just autogen a random one
 	if len(*username) == 0 {
@@ -67,6 +77,8 @@ func main() {
 		}
 		b.TLSConfig.Certificates = append(b.TLSConfig.Certificates, cert)
 	}
+
+	opus.Register(*encoderMode)
 
 	b.Init()
 
